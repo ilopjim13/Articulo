@@ -1,15 +1,17 @@
-class Articulo(var nombre:String, var precio:Int) {
+class Articulo(var nombre:String, var precio:Double) {
 
+    val id:Int
+    init {
+        id = ++ident
+    }
 
     companion object {
-        var id = 0
-        init {
-            this.id++
-        }
+        var ident:Int = 0
+
     }
 
     fun promocionNavidad(porciento:Int) = this.precio - (this.precio * (porciento / 100))
 
-    override fun toString() = "${this.nombre} - %.2f€ (ID: ${this.id})".format(this.precio)
+    override fun toString() = "${this.nombre} - %.2f € (ID: ${id})".format(this.precio)
 
 }
